@@ -1,9 +1,6 @@
 package com.example.exercise_19_tuwaiqjava.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,5 +28,10 @@ public class Teacher {
     @NotNull
     @PositiveOrZero(message = "salary cannot be negative")
     private Integer salary;
+
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "teacher")
+    @PrimaryKeyJoinColumn
+    private Address address;
 
 }

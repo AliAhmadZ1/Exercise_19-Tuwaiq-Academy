@@ -1,8 +1,7 @@
 package com.example.exercise_19_tuwaiqjava.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -21,14 +20,17 @@ public class Address {
     //area , street , buildingNumber ( Add all required validation )
     @Id
     private Integer id;
-    @NotEmpty
+    @Column(columnDefinition = "varchar(20)")
     private String area;
-    @NotEmpty
+    @Column(columnDefinition = "varchar(20)")
     private String street;
-    @NotNull
-    @Positive(message = "cannot be negative or zero")
+    @Column(columnDefinition = "int")
+//    @Positive(message = "cannot be negative or zero")
     private Integer building_number;
 
 
-    private Integer teacher_id;
+    @OneToOne
+    @MapsId
+    @JsonIgnore
+    private Teacher teacher;
 }
