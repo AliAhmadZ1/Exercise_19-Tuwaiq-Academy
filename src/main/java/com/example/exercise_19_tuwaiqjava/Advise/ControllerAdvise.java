@@ -18,10 +18,10 @@ import java.sql.SQLIntegrityConstraintViolationException;
 @ControllerAdvice
 public class ControllerAdvise {
 
-    // Our Exception
+    // Our Exception from ApiException
     @ExceptionHandler(value = ApiException.class)
-    public ResponseEntity ApiException(ApiException e){
-        String message=e.getMessage();
+    public ResponseEntity ApiException(ApiException e) {
+        String message = e.getMessage();
         return ResponseEntity.status(400).body(message);
     }
 
@@ -34,23 +34,22 @@ public class ControllerAdvise {
 
     // SQL Constraint Exception
     @ExceptionHandler(value = SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity<ApiResponse> SQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e){
-        String msg=e.getMessage();
+    public ResponseEntity<ApiResponse> SQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e) {
+        String msg = e.getMessage();
         return ResponseEntity.status(400).body(new ApiResponse(msg));
     }
 
     // Method not allowed Exception
     @ExceptionHandler(value =
             HttpRequestMethodNotSupportedException.class)
-    public ResponseEntity<ApiResponse>
-    HttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+    public ResponseEntity<ApiResponse> HttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         String msg = e.getMessage();
         return ResponseEntity.status(400).body(new ApiResponse(msg));
     }
 
     // Json parse Exception
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
-    public ResponseEntity<ApiResponse> HttpMessageNotReadableException(HttpMessageNotReadableException e){
+    public ResponseEntity<ApiResponse> HttpMessageNotReadableException(HttpMessageNotReadableException e) {
         String msg = e.getMessage();
         return ResponseEntity.status(400).body(new ApiResponse(msg));
     }
@@ -63,17 +62,17 @@ public class ControllerAdvise {
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
-    public ResponseEntity ConstraintViolationException(ConstraintViolationException constraintViolationException){
+    public ResponseEntity ConstraintViolationException(ConstraintViolationException constraintViolationException) {
         return ResponseEntity.status(400).body(constraintViolationException.getMessage());
     }
 
     @ExceptionHandler(value = NoResourceFoundException.class)
-    public ResponseEntity NoResourceFoundException(NoResourceFoundException noResourceFoundException){
+    public ResponseEntity NoResourceFoundException(NoResourceFoundException noResourceFoundException) {
         return ResponseEntity.status(400).body(noResourceFoundException.getMessage());
     }
 
     @ExceptionHandler(value = JpaSystemException.class)
-    public ResponseEntity JpaSystemException(JpaSystemException jpaSystemException){
+    public ResponseEntity JpaSystemException(JpaSystemException jpaSystemException) {
         return ResponseEntity.status(400).body(jpaSystemException.getMessage());
     }
 

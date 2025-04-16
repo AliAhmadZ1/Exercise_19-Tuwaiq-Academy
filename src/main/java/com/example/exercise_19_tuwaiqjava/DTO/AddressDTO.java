@@ -1,6 +1,29 @@
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+// Date Transfer Object
+// to catch json body and transfer it to address table in database
+// to avoid the complicated or infinity loop of creating this object
+// because address had connected to teacher class in one-to-one relation
+
+//---------------------------------------------------------------------------
+//***************************************************************************
+// please let me know if this description is incorrect in any situation
+//***************************************************************************
+//---------------------------------------------------------------------------
+//                             ^
+//                            / \
+//                           / ^ \
+//                          / / \ \
+//                         / /   \ \
+//                           |   |
+//                           |   |
+//                           |   |
+//                           |   |
+//                           |   |
+//                           |   |
 package com.example.exercise_19_tuwaiqjava.DTO;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;

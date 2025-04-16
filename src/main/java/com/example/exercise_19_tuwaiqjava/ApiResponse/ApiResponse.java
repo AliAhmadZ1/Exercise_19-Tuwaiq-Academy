@@ -1,3 +1,5 @@
+// this class for send a json response
+
 package com.example.exercise_19_tuwaiqjava.ApiResponse;
 
 import lombok.AllArgsConstructor;

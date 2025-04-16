@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AddressService {
 
+    // dependency injection
     private final AddressRepository addressRepository;
     private final TeacherRepository teacherRepository;
 
