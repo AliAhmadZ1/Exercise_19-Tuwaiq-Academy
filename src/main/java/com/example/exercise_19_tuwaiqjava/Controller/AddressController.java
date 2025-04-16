@@ -25,7 +25,19 @@ public class AddressController {
     @PostMapping("/add")
     public ResponseEntity addAddress(@RequestBody@Valid AddressDTO addressDTO){
         addressService.addAddress(addressDTO);
-        return ResponseEntity.status(200).body(new ApiResponse("address updated"));
+        return ResponseEntity.status(200).body(new ApiResponse("address created"));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity updateAddress(@RequestBody@Valid AddressDTO addressDTO){
+        addressService.updateAddress(addressDTO);
+        return ResponseEntity.status(200).body(new ApiResponse("address is updated"));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteAddress(@PathVariable Integer id){
+        addressService.deleteAddress(id);
+        return ResponseEntity.status(200).body(new ApiResponse("address is deleted"));
     }
 
 }
